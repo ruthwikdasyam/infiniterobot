@@ -26,7 +26,7 @@ class L_Subscriber(Node):
     def rangelist(self, msg):
         vel = Float64MultiArray()
         pos = Float64MultiArray()
-        vel.data=[-30.0,30.0]
+        vel.data=[-40.0,40.0]
         self.drive.publish(vel)
         pos.data=[0.0,0.0]
         self.driver.publish(pos)    
