@@ -60,18 +60,27 @@ class KeyboardControlNode(Node):
         while True:
             key = self.getKey()
             if key is not None:
+                Pressed = False
                 if key == '\x1b':  # Escape key
                     break
                 elif key == 'q':  # Quit
                     linear_vel=0.0
                     steer_angle=0.0
                 elif key == 'w':  # Forward
+                    Pressed = True
+                    print(" Key Pressed ->   W   ")
                     linear_vel += LIN_VEL_STEP_SIZE
                 elif key == 's':  # Reverse
+                    Pressed = True
+                    print(" Key Pressed ->   S   ")
                     linear_vel -= LIN_VEL_STEP_SIZE
                 elif key == 'd':  # Right
+                    Pressed = True
+                    print(" Key Pressed ->   D   ")
                     steer_angle -= ANG_VEL_STEP_SIZE
                 elif key == 'a':  # Left
+                    Pressed = True
+                    print(" Key Pressed ->   A   ")
                     steer_angle += ANG_VEL_STEP_SIZE
 
 
@@ -80,8 +89,12 @@ class KeyboardControlNode(Node):
                 if steer_angle<-1.0:
                     steer_angle=-1.0
 
-                print("Steer Angle",steer_angle)
-                print("Linear Velocity",linear_vel)
+                if Pressed == True:
+                    print("Steer Angle -> " + str(round(steer_angle,2)) +", Linear Velocity -> "+ str(round(linear_vel,2)))
+                    print("----------------------")
+                    # print("Linear Velocity - ",round(linear_vel,2))
+
+
                 # Publish the twist message
                 wheel_velocities.data = [-linear_vel,linear_vel]
                 joint_positions.data = [steer_angle,steer_angle]
