@@ -25,6 +25,7 @@ ________________________________________________________________________________
         [_________Docker___________]
         <_><_><_><_><_><_><_><_><_><
 
+
 ** Docker - osrf/ros:galactic image **
 
 1) [^-^] Terminal 1 <> Build and run the container
@@ -47,10 +48,15 @@ $ docker exec -it myrobot_container /bin/bash
 Run teleop or autonomous in this terminal - Commands given below
 ------------------------------------
 $ source install/setup.bash
-    <> For teleoperation - control with W S A D keys
+
 $ ros2 run python_scripts teleop
-    <> For complete autodriving in the loop 
+    <> For teleoperation - control with W S A D keys 
+    [#] Press ESC to kill the script
+
 $ ros2 run python_scripts autodrive
+    <> For complete autodriving in the loop 
+    [#] Press Ctrl+C to kill the script
+
 ------------------------------------
 __________________________________________________________________________________________________________________________________
 
@@ -74,9 +80,14 @@ $ ros2 launch carone gazebo.launch.py
 Run teleop or autonomous in this terminal - Commands given below
 ------------------------------------
 $ source install/setup.bash
-    <> For teleoperation - control with W S A D keys
+
 $ ros2 run python_scripts teleop
-    <> For complete autodriving in the loop 
+    <> For teleoperation - control with W S A D keys 
+    [#] Press ESC to kill the script
+
 $ ros2 run python_scripts autodrive
+    <> For complete autodriving in the loop 
+    [#] Press Ctrl+C to kill the script
+
 ------------------------------------
 __________________________________________________________________________________________________________________________________
