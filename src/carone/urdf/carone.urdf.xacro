@@ -358,7 +358,7 @@
     </inertial>
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0 0 -0.04"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -372,7 +372,7 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
+        xyz="0 0 -0.04"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -384,7 +384,7 @@
     name="lidar_joint"
     type="fixed">
     <origin
-      xyz="0.20311 0.37576 -0.30198"
+      xyz="0.20311 0.41576 -0.30198"
       rpy="1.5708 0.1562 3.1416" />
     <parent
       link="body_link" />
@@ -807,7 +807,7 @@
 
 <gazebo reference="lidar_link">
   <sensor name="lidar" type="ray">
-    <pose>0.0 0.0 0.03 0 0 0</pose>
+    <!-- <pose>0.0 0.0 0.03 0 0 0</pose> -->
     <always_on>true</always_on>
     <visualize>true</visualize>
     <update_rate>10</update_rate>
