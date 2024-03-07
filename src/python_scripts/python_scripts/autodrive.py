@@ -30,7 +30,7 @@ class L_Subscriber(Node):
         self.drive.publish(vel)
         pos.data=[0.0,0.0]
         self.driver.publish(pos)    
-
+#iii
         if msg.ranges[-1] < msg.ranges[0]:
             k = msg.ranges[-1]-msg.ranges[-2]
         else:
