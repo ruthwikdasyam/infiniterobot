@@ -29,9 +29,12 @@ ________________________________________________________________________________
 ** Docker - osrf/ros:galactic image **
 
 1) [^-^] Terminal 1 <> Build and run the container
+
+Open the folder containing docker file "infiniterobot". Build and run the container
 ---------------------------------------------------------
-$ docker build --no-cache -t myrobot -f myrobot .
-$ docker run --rm --privileged --net=host -it -v /tmp/.X11-unix:/tmp/.X11-unix --gpus all --runtime=nvidia --env="DISPLAY" --device=/dev/video0:/dev/video0 --name infiniterobot_container infiniterobot---------------------------------------------------------------------------------------
+$ docker build --no-cache -t infiniterobot -f infiniterobot .
+$ docker run --rm --privileged --net=host -it -v /tmp/.X11-unix:/tmp/.X11-unix --gpus all --runtime=nvidia --env="DISPLAY" --device=/dev/video0:/dev/video0 --name infiniterobot_container infiniterobot
+
 ---------------------------------------------------------
 Launch the Simulation in this terminal with commands given below
 -------------------------------------
@@ -42,7 +45,7 @@ $ ros2 launch carone gazebo.launch.py
 
 2) [^-^] Terminal 2 <> Start new Terminal to run python scripts
 ----------------------------------------------
-$ docker exec -it myrobot_container /bin/bash
+$ docker exec -it infiniterobot_container /bin/bash
 ----------------------------------------------
 
 Run teleop or autonomous in this terminal - Commands given below
