@@ -13,10 +13,10 @@ import time
 class L_Subscriber(Node):
     def __init__(self):
         super().__init__('L_Subscriber')
-        self.L_subscriber = self.create_subscription(LaserScan,'/scan',self.scan_callback, QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
+        self.L_subscriber = self.create_subscription(LaserScan,'/scan',self.scan_callback, QoSProfile(depth=15, reliability=ReliabilityPolicy.BEST_EFFORT))
         self.L_subscriber
-        self.drive = self.create_publisher(Float64MultiArray,'/joint_velocity_controller/commands',10)
-        self.driver = self.create_publisher(Float64MultiArray,'/joint_position_controller/commands',10)
+        self.drive = self.create_publisher(Float64MultiArray,'/joint_velocity_controller/commands',15)
+        self.driver = self.create_publisher(Float64MultiArray,'/joint_position_controller/commands',15)
 
     def scan_callback(self, msg):
         # Process the scan data
@@ -26,7 +26,7 @@ class L_Subscriber(Node):
     def rangelist(self, msg):
         vel = Float64MultiArray()
         pos = Float64MultiArray()
-        vel.data=[-40.0,40.0]
+        vel.data=[-20.0,20.0]
         self.drive.publish(vel)
         pos.data=[0.0,0.0]
         self.driver.publish(pos)    
@@ -36,12 +36,12 @@ class L_Subscriber(Node):
         else:
             k = msg.ranges[1]-msg.ranges[0]
 
-        if abs(k) < 0.5 :
-            kp=2.5*k
+        if abs(k) < 0.4:
+            kp=0.05*(1/k)
             pos.data=[kp,kp]
             self.driver.publish(pos)
 
-        if abs(k) > 0.6:
+        if abs(k) > 0.5:
             # kp=3.0*k
             pos.data=[0.0,0.0]
             self.driver.publish(pos)
