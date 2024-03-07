@@ -1,0 +1,4 @@
+ros2 topic pub /joint_velocity_controller/commands std_msgs/msg/Float64MultiArray "{data: [-2.0, 2.0, -2.0, 2.0],layout: {dim:[], data_offset: 1"}}
+
+ros2 topic pub /joint_position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.5,0.5],layout: {dim:[], data_offset: 1"}}
+
